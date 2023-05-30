@@ -2,11 +2,16 @@ import { useState } from "react";
 
 const Home = () => {
   const [openTab, setOpenTab] = useState(1);
-  const [name, setName] = useState("");
-
-  const nameChangeHandler = (event: any) => {
-    setName(event.target.value);
-    console.log(name);
+  const [container, setContainer] = useState({
+    username: "",
+    age: 45,
+  });
+  console.log(container.username);
+  const handleChange = (event: any) => {
+    setContainer({
+      ...container,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const tabNextHandler = (openTab: any) => {
@@ -25,7 +30,7 @@ const Home = () => {
             className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
             role="tablist"
           >
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            <li className="mr-2 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -42,7 +47,7 @@ const Home = () => {
                 Profile
               </a>
             </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            <li className="mr-2 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -59,7 +64,7 @@ const Home = () => {
                 Settings
               </a>
             </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            <li className="mr-2 flex-auto text-center">
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -93,8 +98,9 @@ const Home = () => {
                         id="inline-full-name"
                         type="text"
                         placeholder="Pooja R"
-                        value={name}
-                        onChange={nameChangeHandler}
+                        value={container.username}
+                        onChange={(event) => handleChange(event)}
+                        name="username"
                       />
                     </div>
                   </div>
@@ -112,6 +118,7 @@ const Home = () => {
                         id="inline-full-name"
                         type="email"
                         placeholder="pooja.r@gmail.com"
+                        name="username"
                       />
                     </div>
                   </div>
