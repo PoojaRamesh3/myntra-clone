@@ -2,16 +2,19 @@ import { useState } from "react";
 
 const Home = () => {
   const [openTab, setOpenTab] = useState(1);
-  const [storeObj, setStoreObj] = useState({
-    fullname: "",
-  });
+  const [name, setName] = useState("");
 
-  const { fullname } = storeObj;
+  const nameChangeHandler = (event: any) => {
+    setName(event.target.value);
+    console.log(name);
+  };
 
-  const handleChange = (event: any) => {
-    const value = event.target.value;
-    console.log(fullname);
-    setStoreObj({ ...storeObj, [event.target.name]: value });
+  const tabNextHandler = (openTab: any) => {
+    openTab < 3 && openTab > 0 && setOpenTab(openTab + 1);
+  };
+
+  const tabPreHandler = (openTab: any) => {
+    openTab > 1 && setOpenTab(openTab - 1);
   };
 
   return (
@@ -90,8 +93,8 @@ const Home = () => {
                         id="inline-full-name"
                         type="text"
                         placeholder="Pooja R"
-                        value={fullname}
-                        onChange={(e) => handleChange(e)}
+                        value={name}
+                        onChange={nameChangeHandler}
                       />
                     </div>
                   </div>
@@ -109,7 +112,6 @@ const Home = () => {
                         id="inline-full-name"
                         type="email"
                         placeholder="pooja.r@gmail.com"
-                        // value="Jane Doe"
                       />
                     </div>
                   </div>
@@ -127,7 +129,6 @@ const Home = () => {
                         id="inline-full-name"
                         type="text"
                         placeholder="9876543210"
-                        // value="Jane Doe"
                       />
                     </div>
                   </div>
@@ -137,13 +138,13 @@ const Home = () => {
             <div className="flex items-center justify-evenly">
               <button
                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                onClick={() => setOpenTab(openTab - 1)}
+                onClick={() => tabPreHandler(openTab)}
               >
                 Prev
               </button>
               <button
                 className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-                onClick={() => setOpenTab(openTab + 1)}
+                onClick={() => tabNextHandler(openTab)}
               >
                 Next
               </button>
