@@ -16,26 +16,21 @@ const NavBar = () => {
           </Link>
           <ul className={`flex`}>
             {content.navbar.leftmenuitems.map((item, index) => (
-              <>
-                <li
-                  key={index}
-                  className={`${
-                    item.tag === "NEW" ? "relative" : ""
-                  } hover:border-b-pink-500 border-y-4 border-white`}
+              <li
+                key={index}
+                className={`${
+                  item.tag === "NEW" ? "relative" : ""
+                } hover:border-b-pink-500 border-y-4 border-white`}
+              >
+                <div
+                  className={`absolute bottom-10 left-[68px] text-xs w-fit font-bold text-pink-500`}
                 >
-                  <div
-                    className={`absolute bottom-10 left-[68px] text-xs w-fit font-bold text-pink-500`}
-                  >
-                    {item.tag}
-                  </div>
-                  <Link
-                    to={item.url}
-                    className={`font-semibold px-3 py-7 block`}
-                  >
-                    {item.listname}
-                  </Link>
-                </li>
-              </>
+                  {item.tag}
+                </div>
+                <Link to={item.url} className={`font-semibold px-3 py-7 block`}>
+                  {item.listname}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
