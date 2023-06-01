@@ -10,7 +10,6 @@ const Form = () => {
       name: "Germany",
       states: ["Duesseldorf", "Leinfelden-Echterdingen", "Eschborn"],
     },
-
     {
       name: "France",
       states: ["Auvergne", "Bretagne", "Corse", "Centre"],
