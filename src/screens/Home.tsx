@@ -1,5 +1,11 @@
+import Tabs from "../components/Tabs";
+
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <Tabs />
+    </>
+  );
 };
 
 export default Home;
